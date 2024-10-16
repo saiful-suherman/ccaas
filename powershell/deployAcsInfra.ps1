@@ -1,10 +1,14 @@
-$resourceGroupName = "rg-ccaas-dev"
+param (
+    [Parameter(Mandatory)]
+    [string]$resourceGroupName
+)
 
-$templateFilePath = .\bicep\acs\main.bicep
+$templateFilePath = "..\bicep\acs\main.bicep"
 # $templateParametersFilePath = .\bicep\acs\parameters.json
 
 $deploymentName = "deploy-acs-infra"
 $randomString = (65..90 + 97..122 | Get-Random -Count 6 | ForEach-Object {[char]$_}) -join ''
-$uniqueDeploymentName = "$deploymentName-$randomString"
+$date = Get-Date -Format "yyyyMMdd"
+$uniqueDeploymentName = "$deploymentName-$randomString-$date"
 
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile $templateFilePath -Name $uniqueDeploymentName
