@@ -33,12 +33,18 @@ param env string = 'dev'
 param subUniqueId string = '0197'
 
 // Solution Description
-param description string = 'acs'
+param description string = 'ccaas'
 
 // Resource Name Suffix
 param rscNameSuffix string = '-${subUniqueId}-${description}-${env}'
 
 /* --- RESOURCE PARAMS --- */
+// Azure Communication Services Resource Location
+@allowed([
+  'global'
+])
+param acsResourceLocation string = 'global'
+
 // Azure Communication Services Data Residence
 @allowed([
   'asia'
@@ -62,7 +68,7 @@ param enableAcsChatLogs bool = false
 param enableAcsEmailLogs bool = false
 
 /* LOG TYPE ARRAYS */
-// General logs
+// ACS General logs
 param acsGeneralLogs array = [
   {
     category: 'AuthOperational'
@@ -74,7 +80,7 @@ param acsGeneralLogs array = [
   }
 ]
 
-// Voice logs
+// ACS Call logs
 param acsCallLogs array = [
   
   {
@@ -119,7 +125,7 @@ param acsCallLogs array = [
   }
 ]
 
-// SMS logs
+// ACS SMS logs
 param acsSmsLogs array = [
   {
     category: 'SMSOperational'
@@ -127,7 +133,7 @@ param acsSmsLogs array = [
   }
 ]
 
-// Chat logs
+// ACS Chat logs
 param acsChatLogs array = [
   {
     category: 'ChatOperational'
@@ -135,7 +141,7 @@ param acsChatLogs array = [
   }
 ]
 
-// Email logs
+// ACS Email logs
 param acsEmailLogs array = [
   {
     category: 'EmailSendMailOperational'
@@ -162,11 +168,18 @@ param tags object = {
   solution: 'Dynamics 365 Contact Center Europe'
 }
 
+// Event Grid System Topic SKU type
+@allowed([
+  'Basic'
+  'Premium'
+])
+param egstSku string = 'Basic'
+
 /* --- RESOURCE DEPLOYMENT --- */
 // Azure Communication Services
 resource communicationService 'Microsoft.Communication/communicationServices@2023-03-31' = {
   name: 'acs${rscNameSuffix}-${dataLocation}'
-  location: 'global'
+  location: acsResourceLocation
   tags: tags
   properties: {
     dataLocation: dataLocation
@@ -218,12 +231,19 @@ resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
 }
 
 // Event Grid System Topic
-resource eventGridSystemTopic 'Microsoft.EventGrid/systemTopics@2021-06-01' = {
+resource eventGridSystemTopic 'Microsoft.EventGrid/systemTopics@2022-06-15' = {
   name: 'egst${rscNameSuffix}'
-  location: location
+  location: acsResourceLocation
   tags: tags
-  properties: {
-    publicNetworkAccess: 'Enabled'
+  sku: {
+    name: egstSku
+  }
+  identity: {
+    type: 'None'
+  }
+  properties:{
+    source: communicationService.id
+    topicType: 'Microsoft.Communication.CommunicationServices'
   }
 }
 
