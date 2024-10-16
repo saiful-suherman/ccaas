@@ -45,13 +45,15 @@ PowerShell scripts are used to deploy the respective Bicep Templates.
     ├── deployAudiocodesStackManager.ps1 # Work in progress
     └── deployAcsInfra.ps1
 ```
-| Script | Description | 
-| --- | --- |
-| deployAudiocodesStackManager.ps1 | _Work in progress_<br>Deploys the resources declared in `main.bicep` template in the `audiocodes` folder |
-| deployAcsInfra.ps1 | Deploys the resources declared in `main.bicep` template in the `acs` folder  |
 
-
-The PowerShell script(s) assume that you have already connected to the designated Azure tenant/subscription using
+The PowerShell script(s) assume that you have already connected to the designated Azure tenant/subscription using:
 ```ps
 Connect-AzAccount -AccountId your.name@domain.com -Tenant tenantId -Subscription subscriptionId
 ```
+
+| Script | Description | 
+| --- | --- |
+| deployAudiocodesStackManager.ps1 | _Work in progress_<br>Deploys the resources declared in `main.bicep` template in the `audiocodes` folder |
+| deployAcsInfra.ps1 | Deploys the resources declared in `main.bicep` template in the `acs` folder. <br> It is mandatory to specify the target `$resourceGroupName`, when running the script: <br>`.\deployAcsInfra.ps1 -resourceGroupName "rg-ccaas-dev"`|
+
+
