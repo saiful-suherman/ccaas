@@ -251,4 +251,4 @@ resource eventGridSystemTopic 'Microsoft.EventGrid/systemTopics@2022-06-15' = {
 output acsResourceName string = communicationService.name
 output acsResourceId string = communicationService.id
 output acsImmutableResourceId string = communicationService.properties.immutableResourceId
-output acsDataLocation string = communicationService.properties.dataLocation
+//output acsDataLocation string = communicationService.properties.dataLocation
