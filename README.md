@@ -10,8 +10,8 @@ ccaas
 │   ├── /acs
 │   │   └── main.bicep
 │   │
-│   ├── /event-subscriptions
-│   └── # Work in progress
+│   └── /event-subscriptions
+│      └── # Work in progress
 │   
 ├── /powershell    
 │   └── deployAcsInfra.ps1
