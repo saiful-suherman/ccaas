@@ -1,0 +1,36 @@
+{
+    "analyzers": {
+        "core": {
+            "enabled": true,
+            "rules": {
+                "no-hardcoded-location": {
+                    "level": "warning"
+                },
+                "no-hardcoded-env-urls": {
+                    "level": "warning"
+                },
+                "no-unused-params": {
+                    "level": "off"
+                },
+                "prefer-interpolation": {
+                    "level": "warning"
+                },
+                "simplify-interpolation": {
+                    "level": "info"
+                },
+                "outputs-should-not-contain-secrets": {
+                    "level": "error"
+                },
+                "adminusername-should-not-be-literal": {
+                    "level": "error"
+                },
+                "secure-secrets-in-params": {
+                    "level": "error"
+                },
+                "nested-deployment-template-scoping":{
+                    "level": "warning"
+                }
+            }
+        }
+    }
+}

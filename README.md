@@ -51,8 +51,17 @@ The PowerShell script(s) assume that you have already connected to the designate
 Connect-AzAccount -AccountId your.name@domain.com -Tenant tenantId -Subscription subscriptionId
 ```
 
+You are required to set the powershell folder as working directory
+```
+ccaas 
+└── /powershell    
+   ├── deployAcsInfra.ps1
+   └── ...
+```
+
 | Script | Description | 
 | --- | --- |
+| deployCcaasRgs.ps1 | _Work in progress_<br>Deploys the resources groups declared in `main-rgs.bicep` template in the `audiocodes` folder |
 | deployAudiocodesStackManager.ps1 | _Work in progress_<br>Deploys the resources declared in `main.bicep` template in the `audiocodes` folder |
 | deployAcsInfra.ps1 | Deploys the resources declared in `main.bicep` template in the `acs` folder. <br> It is mandatory to specify the target `$resourceGroupName`, when running the script: <br>`.\deployAcsInfra.ps1 -resourceGroupName "rg-ccaas-dev"`|
 
