@@ -36,3 +36,22 @@ The `main.bicep` template found under the `acs` folder deploys  following resour
 
 ### Event Subscriptions
 **_Work in progress_...**
+
+## PowerShell
+PowerShell scripts are used to deploy the respective Bicep Templates.
+
+```
+/powershell    
+    ├── deployAudiocodesStackManager.ps1 # Work in progress
+    └── deployAcsInfra.ps1
+```
+| Script | Description | 
+| --- | --- |
+| deployAudiocodesStackManager.ps1 | _Work in progress_<br>Deploys the resources declared in `main.bicep` template in the `audiocodes` folder |
+| deployAcsInfra.ps1 | Deploys the resources declared in `main.bicep` template in the `acs` folder  |
+
+
+The PowerShell script(s) assume that you have already connected to the designated Azure tenant/subscription using
+```ps
+Connect-AzAccount -AccountId your.name@domain.com -Tenant tenantId -Subscription subscriptionId
+```
