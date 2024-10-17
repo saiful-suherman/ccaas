@@ -1,4 +1,12 @@
 # IaC for CCaaS
+
+### Most recent updates
+#### **Update 17.10.2024**
+> Repo is currently undergoing development and is being reorganized into modules and seprate component main-templates. Below README may not reflect current state.
+#### **Update 16.10.2024**
+> Repo created and fed with base templates
+
+## README
 This repository contains IaC templates for deploying Azure components necessary for Contact Center as a Service voice infrastructure.
 
 ```
@@ -24,7 +32,7 @@ ccaas
 ### Audiocodes 
 **_Work in progress_...**
 
-### Azure Communication Services
+### Azure Communication Services (acs)
 The `main.bicep` template found under the `acs` folder deploys  following resources:
 
 | Resource Type | Description | Purpose | 
@@ -34,7 +42,7 @@ The `main.bicep` template found under the `acs` folder deploys  following resour
 | Event Grid System Topics | --- |  ---|
 | Application Insights | --- |  ---|
 
-### Event Subscriptions
+### ACS Event Subscriptions (event-subscriptions)
 **_Work in progress_...**
 
 ## PowerShell
