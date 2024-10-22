@@ -20,7 +20,7 @@ variables:
     value: 'defaultResources'
 
 stages:
-- stage: Dev
+- stage: 'Dev_Environment'
   jobs:
     - job: Deploy_RGs
       pool:
@@ -28,7 +28,7 @@ stages:
       steps:
         - script: echo "Hello World"
           displayName: 'Deploy Resource Group(s)'
-    - job: Deploy_ACS_Dev
+    - job: Deploy_Resources
       pool:
         vmImage: 'ubuntu-latest'
       steps:
@@ -39,7 +39,7 @@ stages:
         - script: echo "Hello World"
           displayName: 'Deploy Resources'
       dependsOn: Deploy_RGs
-- stage: Test
+- stage: 'Test_Environment'
   jobs:
     - job: Deploy_RGs
       pool:
@@ -47,7 +47,7 @@ stages:
       steps:
         - script: echo "Hello World"
           displayName: 'Deploy Resource Group(s)'
-    - job: Deploy_ACS_Dev
+    - job: Deploy_Resources
       pool:
         vmImage: 'ubuntu-latest'
       steps:
