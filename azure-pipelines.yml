@@ -1,0 +1,43 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+  branches:
+    include:
+    - dev
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  - name: resourceGroup
+    value: 'defaultResourceGroup'
+  - name: virtualNetwork
+    value: 'defaultVirtualNetwork'
+  - name: resources
+    value: 'defaultResources'
+
+parameters:
+  - name: resourceGroup
+    type: string
+    default: ${{ variables.resourceGroup }}
+  - name: virtualNetwork
+    type: string
+    default: ${{ variables.virtualNetwork }}
+  - name: resources
+    type: string
+    default: ${{ variables.resources }}
+
+jobs:
+  - job: Deploy
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+      - script: echo "Hello World"
+        displayName: 'Deploy Resource Group(s)'
+      - script: echo "Hello World"
+        displayName: 'Deploy Virtual Network(s)'
+      - script: echo "Hello World"
+        displayName: 'Deploy Resources'
