@@ -20,7 +20,13 @@ variables:
     value: 'defaultResources'
 
 jobs:
-  - job: Deploy
+  - job: Deploy_RGs
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+      - script: echo "Hello World"
+        displayName: 'Deploy Resource Group(s)'
+  - job: Deploy_ACS_Dev
     pool:
       vmImage: 'ubuntu-latest'
     steps:
