@@ -19,20 +19,40 @@ variables:
   - name: resources
     value: 'defaultResources'
 
-jobs:
-  - job: Deploy_RGs
-    pool:
-      vmImage: 'ubuntu-latest'
-    steps:
-      - script: echo "Hello World"
-        displayName: 'Deploy Resource Group(s)'
-  - job: Deploy_ACS_Dev
-    pool:
-      vmImage: 'ubuntu-latest'
-    steps:
-      - script: echo "Hello World"
-        displayName: 'Deploy Resource Group(s)'
-      - script: echo "Hello World"
-        displayName: 'Deploy Virtual Network(s)'
-      - script: echo "Hello World"
-        displayName: 'Deploy Resources'
+stages:
+- stage: Dev
+  jobs:
+    - job: Deploy_RGs
+      pool:
+        vmImage: 'ubuntu-latest'
+      steps:
+        - script: echo "Hello World"
+          displayName: 'Deploy Resource Group(s)'
+    - job: Deploy_ACS_Dev
+      pool:
+        vmImage: 'ubuntu-latest'
+      steps:
+        - script: echo "Hello World"
+          displayName: 'Deploy Resource Group(s)'
+        - script: echo "Hello World"
+          displayName: 'Deploy Virtual Network(s)'
+        - script: echo "Hello World"
+          displayName: 'Deploy Resources'
+- stage: Test
+  jobs:
+    - job: Deploy_RGs
+      pool:
+        vmImage: 'ubuntu-latest'
+      steps:
+        - script: echo "Hello World"
+          displayName: 'Deploy Resource Group(s)'
+    - job: Deploy_ACS_Dev
+      pool:
+        vmImage: 'ubuntu-latest'
+      steps:
+        - script: echo "Hello World"
+          displayName: 'Deploy Resource Group(s)'
+        - script: echo "Hello World"
+          displayName: 'Deploy Virtual Network(s)'
+        - script: echo "Hello World"
+          displayName: 'Deploy Resources'
