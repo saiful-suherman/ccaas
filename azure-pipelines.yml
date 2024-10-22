@@ -57,3 +57,4 @@ stages:
           displayName: 'Deploy Virtual Network(s)'
         - script: echo "Hello World"
           displayName: 'Deploy Resources'
+      dependsOn: Deploy_RGs
