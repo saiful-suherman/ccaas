@@ -19,17 +19,6 @@ variables:
   - name: resources
     value: 'defaultResources'
 
-parameters:
-  - name: resourceGroup
-    type: string
-    default: ${{ variables.resourceGroup }}
-  - name: virtualNetwork
-    type: string
-    default: ${{ variables.virtualNetwork }}
-  - name: resources
-    type: string
-    default: ${{ variables.resources }}
-
 jobs:
   - job: Deploy
     pool:
