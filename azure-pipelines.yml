@@ -20,7 +20,7 @@ variables:
     value: 'defaultResources'
 
 stages:
-- stage: 'Dev_Environment'
+- stage: 'Dev'
   jobs:
     - job: Deploy_RGs
       pool:
@@ -34,12 +34,8 @@ stages:
       steps:
         - script: echo "Hello World"
           displayName: 'Deploy Resource Group(s)'
-        - script: echo "Hello World"
-          displayName: 'Deploy Virtual Network(s)'
-        - script: echo "Hello World"
-          displayName: 'Deploy Resources'
       dependsOn: Deploy_RGs
-- stage: 'Test_Environment'
+- stage: 'Test'
   jobs:
     - job: Deploy_RGs
       pool:
@@ -51,8 +47,6 @@ stages:
       pool:
         vmImage: 'ubuntu-latest'
       steps:
-        - script: echo "Hello World"
-          displayName: 'Deploy Resource Group(s)'
         - script: echo "Hello World"
           displayName: 'Deploy Virtual Network(s)'
         - script: echo "Hello World"
