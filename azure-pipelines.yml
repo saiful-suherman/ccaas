@@ -11,6 +11,16 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+parameters:
+- name: environment
+  displayName: Environment
+  default: 'dev'
+  type: string
+  values:
+    - dev
+    - test
+  
+
 variables:
   - name: resourceGroup
     value: 'defaultResourceGroup'
@@ -26,13 +36,13 @@ stages:
       pool:
         vmImage: 'ubuntu-latest'
       steps:
-        - script: echo "Hello World"
+        - script: echo "Hello World - We could now deploy Resource Groups to $(environment)"
           displayName: 'Deploy Resource Group(s)'
     - job: Deploy_Resources
       pool:
         vmImage: 'ubuntu-latest'
       steps:
-        - script: echo "Hello World"
+        - script: echo "Hello World - We could now deploy Resources to $(environment)"
           displayName: 'Deploy Resource Group(s)'
       dependsOn: Deploy_RGs
 - stage: 'Test'
@@ -41,14 +51,12 @@ stages:
       pool:
         vmImage: 'ubuntu-latest'
       steps:
-        - script: echo "Hello World"
+        - script: echo "Hello World - We could now deploy Resource Groups to $(environment)"
           displayName: 'Deploy Resource Group(s)'
     - job: Deploy_Resources
       pool:
         vmImage: 'ubuntu-latest'
       steps:
-        - script: echo "Hello World"
-          displayName: 'Deploy Virtual Network(s)'
-        - script: echo "Hello World"
-          displayName: 'Deploy Resources'
+        - script: echo "Hello World - We could now deploy Resources to $(environment)"
+          displayName: 'Deploy Resource Group(s)'
       dependsOn: Deploy_RGs
